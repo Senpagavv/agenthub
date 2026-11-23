@@ -894,7 +894,16 @@ def predict(r, field):
         return None
     if "answers" in r:
         a = r["answers"].get(field) or {}
-        return {"choice": a.get("choice"), "noul": a.get("noul", 0) >= 0.5, "score": round(a.get("score", -1))}.get(a.get("type"))
+        kind = a.get("type")
+        value = a.get(kind)
+        if kind == "choice":
+            return value
+        if isinstance(value, (int, float)):
+            if kind == "noul":
+                return value >= 0.5
+            if kind == "score":
+                return round(value)
+        return None
     out = r.get("output")
     return out.get(field) if isinstance(out, dict) else out
 
