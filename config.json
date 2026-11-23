@@ -1,0 +1,150 @@
+{
+  "deepseek": {
+    "key_env": "AGENTHUB_DEEPSEEK_KEY",
+    "base_url": "https://api.deepseek.com",
+    "aliases": {
+      "flash": "deepseek-flash",
+      "pro": "deepseek-v4-pro"
+    },
+    "default_model": "flash",
+    "peak_hours_bj": [
+      [
+        9,
+        12
+      ],
+      [
+        14,
+        18
+      ]
+    ],
+    "prices_checked": "2026-10-26",
+    "timeout_s": 300,
+    "retries": 3,
+    "models": {
+      "deepseek-flash": {
+        "vision": true,
+        "price_cny_per_m": {
+          "peak": {
+            "in_hit": 0.04,
+            "in_miss": 2.0,
+            "out": 8.0
+          },
+          "offpeak": {
+            "in_hit": 0.02,
+            "in_miss": 1.0,
+            "out": 4.0
+          }
+        }
+      },
+      "deepseek-v4-pro": {
+        "vision": false,
+        "price_cny_per_m": {
+          "peak": {
+            "in_hit": 0.3,
+            "in_miss": 9.0,
+            "out": 27.0
+          },
+          "offpeak": {
+            "in_hit": 0.15,
+            "in_miss": 4.5,
+            "out": 13.5
+          }
+        }
+      }
+    },
+    "default_system": "Follow the user's task and requested output format."
+  },
+  "defapi": {
+    "key_env": "AGENTHUB_DEFAPI_KEY",
+    "base_url": "https://api.defapi.org/v1",
+    "aliases": {
+      "gemini-flash": "google/gemini-3.7-flash",
+      "gpt-mini": "openai/gpt-5-mini",
+      "gpt-terra": "openai/gpt-5.6-terra",
+      "sonnet": "anthropic/claude-sonnet-5-5",
+      "opus": "anthropic/claude-opus-5",
+      "gpt-sol": "openai/gpt-5.6-sol"
+    },
+    "default_model": "sonnet",
+    "usd_cny": 7.2,
+    "fallback_price_usd_per_m": {
+      "in": 3.0,
+      "out": 15.0
+    },
+    "prices_checked": "2026-10-26",
+    "timeout_s": 300,
+    "retries": 3,
+    "models": {
+      "google/gemini-3.7-flash": {
+        "vision": true,
+        "available": false,
+        "price_usd_per_m": {
+          "in": 0.1875,
+          "out": 0.9375
+        }
+      },
+      "openai/gpt-5-mini": {
+        "vision": true,
+        "price_usd_per_m": {
+          "in": 0.175,
+          "out": 1.5
+        }
+      },
+      "openai/gpt-5.6-terra": {
+        "vision": true,
+        "price_usd_per_m": {
+          "in": 0.5,
+          "out": 3.0
+        }
+      },
+      "anthropic/claude-sonnet-5-5": {
+        "vision": true,
+        "price_usd_per_m": {
+          "in": 1.0,
+          "out": 5.0
+        }
+      },
+      "anthropic/claude-opus-5": {
+        "vision": true,
+        "price_usd_per_m": {
+          "in": 2.5,
+          "out": 12.5
+        }
+      },
+      "openai/gpt-5.6-sol": {
+        "vision": true,
+        "price_usd_per_m": {
+          "in": 2.5,
+          "out": 15.0
+        }
+      }
+    }
+  },
+  "jev": {
+    "key_env": "AGENTHUB_JEV_KEY",
+    "channel_env": "AGENTHUB_JEV_CHANNEL",
+    "price_usd_per_m_in": 0.042,
+    "usd_cny": 7.2,
+    "prices_checked": "2026-10-26",
+    "timeout_s": 60,
+    "retries": 3,
+    "low_confidence": 0.7,
+    "channel": "typesafe",
+    "workers": 1,
+    "channels": {
+      "typesafe": {
+        "base_url": "https://api.typesafe.ai",
+        "path": "/v1/systemone",
+        "model": "jev-1.13.0",
+        "price_usd_per_m_in": 0.042
+      }
+    }
+  },
+  "batch": {
+    "workers": 1
+  },
+  "budget": {
+    "daily_cny": 1,
+    "batch_run_cny": 0.2
+  }
+}
